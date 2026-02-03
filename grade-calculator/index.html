@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Moyennes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Calculateur de Moyennes</h1>
+            <p>Gérez vos notes, calculez vos moyennes et analysez vos performances.</p>
+        </header>
+
+        <section class="card form-section">
+            <h2>Ajouter une Matière</h2>
+            <form id="gradeForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="subject">Matière</label>
+                        <input type="text" id="subject" placeholder="Ex: Mathématiques" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="coef">Coefficient</label>
+                        <input type="number" id="coef" value="1" min="0.1" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="noteCC">Note CC (Note 1)</label>
+                        <input type="number" id="noteCC" placeholder="/20" min="0" max="20" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="noteTP">Note TP (Note 2)</label>
+                        <input type="number" id="noteTP" placeholder="/20" min="0" max="20" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="noteExam">Note Examen</label>
+                        <input type="number" id="noteExam" placeholder="/20" min="0" max="20" step="0.01" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary"> Ajouter Matière</button>
+                    <button type="button" id="resetBtn" class="btn btn-secondary">↺ Réinitialiser</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="card stats-section">
+            <div class="stat-card">
+                <h3>Moyenne Générale</h3>
+                <div id="generalAverage" class="stat-value">-</div>
+            </div>
+            <div class="stat-card">
+                <h3>Matières Validées</h3>
+                <div id="validatedCount" class="stat-value">-</div>
+            </div>
+            <div class="stat-card">
+                <h3>En Danger (<8)</h3>
+                <div id="dangerCount" class="stat-value">-</div>
+            </div>
+        </section>
+
+        <section class="card list-section">
+            <div class="list-header">
+                <h2>Relevé de Notes</h2>
+                <div class="list-actions">
+                    <button id="exportCsvBtn" class="btn btn-outline"> Exporter CSV</button>
+                    <button id="printBtn" class="btn btn-outline"> Imprimer</button>
+                </div>
+            </div>
+            <div class="table-container">
+                <table id="gradesTable">
+                    <thead>
+                        <tr>
+                            <th>Matière</th>
+                            <th>Note CC</th>
+                            <th>Note TP</th>
+                            <th>Note Exam</th>
+                            <th>Coef</th>
+                            <th>Moyenne</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be added here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="emptyState" class="empty-state">
+                Aucune matière ajoutée. Commencez par remplir le formulaire.
+            </div>
+        </section>
+
+        <section class="legend-section">
+            <div class="legend-item"><span class="color-box" style="background-color: #d4edda;"></span> Excellence (≥ 16)</div>
+            <div class="legend-item"><span class="color-box" style="background-color: #fff3cd;"></span> Validé (≥ 10)</div>
+            <div class="legend-item"><span class="color-box" style="background-color: #f8d7da;"></span> Rattrapage (8-10)</div>
+            <div class="legend-item"><span class="color-box" style="background-color: #f8d7da; border: 2px solid #dc3545;"></span> Danger (< 8) ⚠️</div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
